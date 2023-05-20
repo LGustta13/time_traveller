@@ -23,7 +23,8 @@ app.register(memoriesRoutes)
 app
   .listen({
     port: 3333,
-    host: 'localhost',
+    // host: 'localhost', //dessa forma funcionou para o axios.post na aplicação web
+    host: '0.0.0.0', // dessa forma funcionou para o axios.post na aplicação mobile
   })
   .then(() => {
     console.log('✔ HTTP server running on http://localhost:3333')
