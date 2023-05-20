@@ -48,6 +48,7 @@ export default function Layout() {
       <StyledStripes className="absolute left-2" />
       <StatusBar style="light" translucent />
 
+      {/* Tratamento das rotas pelo Stack */}
       <Stack
         screenOptions={{
           headerShown: false,
