@@ -36,9 +36,11 @@ export async function uploadRoutes(app: FastifyInstance) {
     const fileName = fileId.concat(extension)
 
     // Estratégia de carregar o vídeo no HD aos poucos, enquanto vai sendo reproduzido (igual YOUTUBE)
+    // É salvo na pasta uploads
     const writeStream = createWriteStream(
       // Arruma os caminhos, como a barra, que é diferente para cada SO
       // Caminho onde os arquivos de upload são salvos
+      // __dirname está em upload.ts
       resolve(__dirname, '../../uploads', fileName),
     )
 
