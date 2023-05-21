@@ -13,6 +13,24 @@ datasource db {
 // Definicação das tabelas do banco de dados
 model User {
   // coluna id como chave primária
-  id   String @id @default(uuid())
-  name String
+  id        String @id @default(uuid())
+  githubId  Int    @unique
+  name      String
+  login     String
+  avatarUrl String
+
+  // Um usuário pode ter várias memórias
+  Memories Memory[]
+}
+
+model Memory {
+  id     String @id @default(uuid())
+  userId String // chave estrangeira
+
+  coverUrl  String
+  content   String
+  isPublic  Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
 }
