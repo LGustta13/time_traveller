@@ -12,11 +12,31 @@ import Icon from '@expo/vector-icons/Feather'
 import NLWLogo from '../src/assets/nlw-spacetime-logo.svg'
 import React, { useState } from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import * as ImagePicker from 'expo-image-picker'
 
 export default function NewMemory() {
   // hook que valida a área segura (abaixo da status bar) para cada dispositivo
   const { bottom, top } = useSafeAreaInsets()
+
+  const [content, setContent] = useState('')
   const [isPublic, setIsPublic] = useState(false)
+
+  async function openImagePicker() {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      quality: 1,
+    })
+
+    console.log(result)
+
+    // if (!result.canceled) {
+    //   setImage(result.assets[0].uri);
+    // }
+  }
+
+  function handleCreateMemory() {
+    console.log(content, isPublic)
+  }
 
   return (
     // Transformada de View para ScrollView justamente se o conteúdo do TextInput for maior que a tela
@@ -54,6 +74,7 @@ export default function NewMemory() {
 
         <TouchableOpacity
           activeOpacity={0.7}
+          onPress={openImagePicker}
           className="h-32 items-center justify-center rounded-lg border border-dashed border-gray-500 bg-black/20"
         >
           <View className="flex-row items-center gap-2">
@@ -66,6 +87,8 @@ export default function NewMemory() {
 
         <TextInput
           multiline
+          value={content}
+          onChangeText={setContent}
           className="p-0 text-center font-body text-lg text-gray-50"
           placeholderTextColor="#56565a"
           placeholder="Fique livre para adicionar fotos, vídeos e relatos sobre essa experiência"
@@ -73,6 +96,7 @@ export default function NewMemory() {
 
         <TouchableOpacity
           activeOpacity={0.7}
+          onPress={handleCreateMemory}
           className="items-center self-center rounded-full bg-green-500 px-5 py-2"
         >
           <Text className="font-alt text-sm uppercase text-black">Salvar</Text>
