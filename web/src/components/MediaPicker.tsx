@@ -1,6 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
 'use client'
 
+import Image from 'next/image'
 import { ChangeEvent, useState } from 'react'
 
 export function MediaPicker() {
@@ -31,7 +31,7 @@ export function MediaPicker() {
 
       {/* Tem-se aqui um if sem else && */}
       {preview && (
-        <img
+        <Image
           src={preview}
           alt=""
           className="aspect-video w-full rounded-lg object-cover"
