@@ -3,10 +3,16 @@ import 'dotenv/config'
 import fastify from 'fastify'
 import cors from '@fastify/cors'
 import jwt from '@fastify/jwt'
+import multipart from '@fastify/multipart'
 import { memoriesRoutes } from './routes/memories'
 import { authRoutes } from './routes/auth'
+import { uploadRoutes } from './routes/upload'
+import { resolve } from 'node:path'
 
 const app = fastify()
+
+// Para upload de arquivos (.png, .txt)
+app.register(multipart)
 
 app.register(cors, {
   origin: true, // todos as urls de frontend poderão acessar o nosso backend
@@ -19,6 +25,13 @@ app.register(jwt, {
 
 app.register(authRoutes)
 app.register(memoriesRoutes)
+app.register(uploadRoutes)
+
+// Transforma a pasta em pública
+app.register(require('@fastify/static'), {
+  root: resolve(__dirname, '../uploads'),
+  prefix: '/uploads',
+})
 
 app
   .listen({
