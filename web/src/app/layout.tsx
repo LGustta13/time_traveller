@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </div>
 
           {/* Lado direito */}
-          <div className="flex flex-col bg-[url(../assets/bg-stars.svg)] bg-cover p-16">
+          <div className="flex max-h-screen flex-col overflow-y-scroll bg-[url(../assets/bg-stars.svg)] bg-cover scrollbar-hide ">
             {children}
           </div>
         </main>
