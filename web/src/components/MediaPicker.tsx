@@ -13,6 +13,7 @@ export function MediaPicker() {
       return
     }
 
+    console.log(files)
     const previewURL = URL.createObjectURL(files[0])
 
     setPreview(previewURL)
@@ -34,6 +35,8 @@ export function MediaPicker() {
         <Image
           src={preview}
           alt=""
+          width={10}
+          height={10}
           className="aspect-video w-full rounded-lg object-cover"
         />
       )}
