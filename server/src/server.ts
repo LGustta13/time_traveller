@@ -35,7 +35,7 @@ app.register(require('@fastify/static'), {
 
 app
   .listen({
-    port: 3333,
+    port: process.env.PORT ? Number(process.env.PORT) : 3333,
     // host: 'localhost', //dessa forma funcionou para o axios.post na aplicação web
     host: '0.0.0.0', // dessa forma funcionou para o axios.post na aplicação mobile
   })
