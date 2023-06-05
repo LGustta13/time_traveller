@@ -8,6 +8,7 @@ import { memoriesRoutes } from './routes/memories'
 import { authRoutes } from './routes/auth'
 import { uploadRoutes } from './routes/upload'
 import { resolve } from 'node:path'
+import { url } from 'node:inspector'
 
 const app = fastify()
 
@@ -15,8 +16,11 @@ const app = fastify()
 app.register(multipart)
 
 app.register(cors, {
-  origin: true, // todos as urls de frontend poderão acessar o nosso backend
-  // origin: ["https://minhaurl.com.br"] exemplo de url que, somente ela, pode acessar o backend
+  // origin: true, // todos as urls de frontend poderão acessar o nosso backend
+  origin: [
+    'https://traveller-gustavo.vercel.app/',
+    'https://traveller-gustavo.vercel.app',
+  ],
 })
 
 app.register(jwt, {
