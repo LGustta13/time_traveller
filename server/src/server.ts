@@ -15,15 +15,15 @@ const app = fastify()
 app.register(multipart)
 
 app.register(cors, {
-  // origin: true, // todos as urls de frontend poderão acessar o nosso backend
-  origin: [
-    'https://traveller-gustavo.vercel.app/',
-    'https://traveller-gustavo.vercel.app',
-    'https://traveller-lgusta.vercel.app/',
-    'https://traveller-lgusta.vercel.app',
-    'http://localhost:3000',
-    'http://localhost:3000/',
-  ],
+  origin: true, // todos as urls de frontend poderão acessar o nosso backend
+  // origin: [
+  //   'https://traveller-gustavo.vercel.app/',
+  //   'https://traveller-gustavo.vercel.app',
+  //   'https://traveller-lgusta.vercel.app/',
+  //   'https://traveller-lgusta.vercel.app',
+  //   'http://localhost:3000',
+  //   'http://localhost:3000/',
+  // ],
 })
 
 app.register(jwt, {
@@ -44,7 +44,7 @@ app
   .listen({
     port: process.env.PORT ? Number(process.env.PORT) : 3333,
     // host: 'localhost', //dessa forma funcionou para o axios.post na aplicação web
-    host: '0.0.0.0', // dessa forma funcionou para o axios.post na aplicação mobile
+    host: process.env.SERVER ? process.env.SERVER : '0.0.0.0', // dessa forma funcionou para o axios.post na aplicação mobile
   })
   .then(() => {
     console.log('✔ HTTP server running on http://localhost:3333')
