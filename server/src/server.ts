@@ -19,6 +19,8 @@ app.register(cors, {
   origin: [
     'https://traveller-gustavo.vercel.app/',
     'https://traveller-gustavo.vercel.app',
+    'https://traveller-lgusta.vercel.app/',
+    'https://traveller-lgusta.vercel.app',
     'http://localhost:3000',
     'http://localhost:3000/',
   ],
