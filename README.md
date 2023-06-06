@@ -40,7 +40,7 @@
 	
 ## Como reproduzir
 	
-Realizando um clone do projeto, basta executar o seguinte comando para baixar as dependências
+Realizando um clone do projeto, basta executar o seguinte comando para baixar as dependências para cada diretório _mobile_, _web_ e _server_
 
 ```
 npm i
