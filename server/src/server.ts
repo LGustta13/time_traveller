@@ -8,7 +8,6 @@ import { memoriesRoutes } from './routes/memories'
 import { authRoutes } from './routes/auth'
 import { uploadRoutes } from './routes/upload'
 import { resolve } from 'node:path'
-import { url } from 'node:inspector'
 
 const app = fastify()
 
@@ -20,6 +19,8 @@ app.register(cors, {
   origin: [
     'https://traveller-gustavo.vercel.app/',
     'https://traveller-gustavo.vercel.app',
+    'http://localhost:3000',
+    'http://localhost:3000/',
   ],
 })
 

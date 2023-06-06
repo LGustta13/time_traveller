@@ -13,7 +13,6 @@ export function MediaPicker() {
       return
     }
 
-    console.log(files)
     const previewURL = URL.createObjectURL(files[0])
 
     setPreview(previewURL)
